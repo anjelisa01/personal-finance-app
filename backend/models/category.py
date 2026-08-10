@@ -3,7 +3,7 @@ from sqlalchemy import select, ForeignKey,func,String
 from datetime import datetime
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 
-from database import Base
+from core.database import Base
 '''
 INFORMATION:
 Category have fk on user_id
@@ -34,9 +34,4 @@ class Category(Base):
     transactions: Mapped[list["Transaction"]] = relationship(
         back_populates="category"
 )
-
-#remove after push
-    #basically saying mapping list of transactions to a category
-    #because this Category object/model representing one single category,
-    #so we mapped list of transaction to it.
     

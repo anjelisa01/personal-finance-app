@@ -1,12 +1,10 @@
-from fastapi import APIRouter,Depends,HTTPException
-from sqlalchemy.orm import Session
+from fastapi import APIRouter,Depends
 from schemas.category import CategoryBase,CategoryResponse
 
-from dependencies.services import get_category_service#Add new account
+from dependencies.services import get_category_service
 from service.category_service import CategoryService
 
 router=APIRouter(tags=["categories"])
-
 
 @router.post("/",response_model=CategoryResponse)
 def add_category(payload:CategoryBase,service:CategoryService=Depends(get_category_service)):

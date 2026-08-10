@@ -37,7 +37,7 @@ class CategoryService:
         except Exception:
             self.db.rollback()
             raise 
-        logger.info("Category created, category id=%s", category_id)
+        logger.info("Category created, category id=%s", category.id)
         self.db.refresh(category)
         return category
 
@@ -65,6 +65,13 @@ class CategoryService:
             raise ResourceNotFoundError("Category", category_id)
         #build update data
         update_data=payload.model_dump(exclude_unset=True)
+
+        #if category_name existed in database
+        if "category_name" in update_data:
+            existing=get_category_name(self.db,self.user_id,update_data["category_name"])
+            if existing:
+                raise ResourceExistedError("Category",update_data["category_name"])
+
         #update
         try:
             for field,value in update_data.items():
