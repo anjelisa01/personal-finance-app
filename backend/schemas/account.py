@@ -1,9 +1,8 @@
-from pydantic import EmailStr,BaseModel,ConfigDict
-from typing import Optional
+from pydantic import BaseModel
 from decimal import Decimal
 
 class AccountBase(BaseModel):
-    account_name:str #in update this field is the only updatable so use this model directly is fine, dont need |none=none
+    account_name:str
     current_balance:Decimal
 class AccountUpdate(BaseModel):
     current_balance:float  | None = None
