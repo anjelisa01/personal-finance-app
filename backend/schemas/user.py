@@ -1,5 +1,4 @@
 from pydantic import EmailStr,BaseModel,ConfigDict
-from typing import Optional
 
 #base
 class UserBase(BaseModel):
@@ -20,4 +19,3 @@ class UserUpdate(BaseModel):
 #output system
 class UserResponse(UserBase):
     model_config = ConfigDict(from_attributes=True)
-

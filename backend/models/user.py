@@ -1,9 +1,9 @@
 #imports
-from sqlalchemy import select, ForeignKey,func,String
+from sqlalchemy import ForeignKey,func,String
 from datetime import datetime
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 
-from database import Base
+from core.database import Base
 
 '''
 INFORMATION:
@@ -36,3 +36,15 @@ class User(Base):
         back_populates="user")
     goals: Mapped[list["Goal"]]=relationship(
         back_populates="user")
+
+
+'''
+if making changes in the sqlalchemy models level, i have to also change on the posgresql level
+changing in sqlalchemyy level doesnt automatically change the db 
+
+Because SQLAlchemy is NOT an ORM that syncs schema automatically 
+(unless you explicitly use migration tools or drop/create tables).
+....
+so back_populates needed both table that connected to defined that they are conncted 
+
+'''

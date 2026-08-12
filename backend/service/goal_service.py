@@ -37,9 +37,10 @@ class GoalService:
         except Exception:
             self.db.rollback()
             raise 
-        logger.info("Goal created, goal id=%s", goal_id) 
+        logger.info("Goal created, goal id=%s", goal.id) 
         self.db.refresh(goal)
         return goal
+
     def read_one(self,goal_id:int):
         goal=self.db.scalar(
         select(Goal).where(
@@ -51,7 +52,6 @@ class GoalService:
         if goal is None:
             raise ResourceNotFoundError("Goal", goal_id)
         return goal
-        # try/except is for handling exceptions, not for handling normal return values.
        
     def read_all(self):
         return self.db.scalars(
@@ -67,6 +67,12 @@ class GoalService:
             raise ResourceNotFoundError("Goal", goal_id)
         #build update data
         update_data=payload.model_dump(exclude_unset=True)
+
+        #if goal_name existed in database
+        if "goal_name" in update_data:
+            existing=get_goal_name(self.db,self.user_id,update_data["goal_name"])
+            if existing:
+                raise ResourceExistedError("Account",update_data["goal_name"])
         #update
         try:
             for field,value in update_data.items():
@@ -78,6 +84,7 @@ class GoalService:
         logger.info("Goal updated, goal id =%s", goal_id)
         self.db.refresh(goal)
         return goal
+
     def delete(self,goal_id:int):
         goal=self.db.scalar(
             select(Goal).where(

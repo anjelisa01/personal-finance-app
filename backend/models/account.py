@@ -1,6 +1,5 @@
 #impors
-from sqlalchemy import select, ForeignKey,func,String,Numeric
-from datetime import datetime
+from sqlalchemy import ForeignKey,String,Numeric
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from decimal import Decimal
 from core.database import Base

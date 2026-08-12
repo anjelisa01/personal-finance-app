@@ -1,9 +1,8 @@
 #impors
-from sqlalchemy import select, ForeignKey,func,String
-from datetime import datetime
+from sqlalchemy import ForeignKey,func,String
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 
-from database import Base
+from core.database import Base
 '''
 INFORMATION:
 Budget have fk on user_id
@@ -11,7 +10,6 @@ budget - user: many to one
 category-budget: one to one
 category-transactions: one to many
 '''
-
 class Budget(Base):
     __tablename__="budget"
 

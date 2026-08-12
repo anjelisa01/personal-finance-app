@@ -1,10 +1,10 @@
 #imports
-from sqlalchemy import select, ForeignKey,func,String,Numeric
+from sqlalchemy import ForeignKey,String,Numeric,func
 from datetime import datetime
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from decimal import Decimal
 
-from database import Base
+from core.database import Base
 '''
 INFORMATION:
 transaction have fk on account_id 
@@ -54,7 +54,6 @@ class Transaction(Base):
         ForeignKey("accounts.id"),
         nullable=False #mandatory
     )
-    
 
     #relationship
     account:Mapped["Account"]=relationship(
@@ -63,4 +62,3 @@ class Transaction(Base):
     category: Mapped["Category | None"] = relationship(
     back_populates="transactions"
     ) 
-    

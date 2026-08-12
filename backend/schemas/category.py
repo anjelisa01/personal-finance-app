@@ -1,5 +1,4 @@
-from pydantic import EmailStr,BaseModel,ConfigDict
-from typing import Optional
+from pydantic import BaseModel
 
 class CategoryBase(BaseModel):
     category_name:str 

@@ -1,9 +1,9 @@
 #imports
-from sqlalchemy import select, ForeignKey,func,String
+from sqlalchemy import ForeignKey,String
 from datetime import datetime
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 
-from database import Base
+from core.database import Base
 
 '''
 INFORMATION:
@@ -26,9 +26,7 @@ class Goal(Base):
         ForeignKey("users.id") #
     )
     
-
     #relationship
     user:Mapped["User"]=relationship(
         back_populates="goals" 
     )
-   

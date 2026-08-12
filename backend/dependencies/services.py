@@ -22,13 +22,9 @@ def get_account_service(db: Session = Depends(get_db),user_id:int=Depends(get_cu
 
 def get_auth_service(db: Session = Depends(get_db)):
     return AuthService(db)
+
 def get_category_service(db: Session = Depends(get_db),user_id:int=Depends(get_current_user)):
     return CategoryService(db,user_id)
-
-def get_category_id():
-    pass
-def get_account_id():
-    pass
 
 def get_budget_service(db: Session = Depends(get_db),user_id:int=Depends(get_current_user)):
     return BudgetService(db,user_id)

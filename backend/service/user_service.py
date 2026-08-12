@@ -58,6 +58,10 @@ class UserService:
         update_data=payload.model_dump(exclude_unset=True)
         if "password" in update_data:
             user.hashed_password = hash_password(update_data.pop("password"))
+        if "email" in update_data:
+            existing=get_user_by_email(self.db,update_data["email"])
+            if existing:
+                raise ResourceExistedError("User",update_data["email"])
 
         #update
         try:

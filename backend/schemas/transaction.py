@@ -1,5 +1,4 @@
 from pydantic import BaseModel,ConfigDict
-from typing import Optional
 from enum import Enum
 from decimal import Decimal
 
@@ -7,7 +6,6 @@ class TransactionType(str,Enum):
     EXPENSE = "expense"
     INCOME = "income"
     SAVING="transfer"
-
 
 #Input user
 class TransactionAdd(BaseModel):

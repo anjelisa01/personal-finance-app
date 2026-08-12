@@ -1,13 +1,9 @@
-from fastapi import APIRouter,Depends,HTTPException
-from sqlalchemy.orm import Session
+from fastapi import APIRouter,Depends
 from schemas.goal import GoalBase,GoalUpdate,GoalResponse
-# services
-# from service.goal import create_goal,read_one_goal,read_all_goals,update_goal,delete_goal
-#dependencies
+
 from service.goal_service import GoalService
 from dependencies.services import get_goal_service
 
-#Add new account
 router=APIRouter(tags=["goals"])
 
 @router.post("/",response_model=GoalResponse)

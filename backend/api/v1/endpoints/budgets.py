@@ -1,5 +1,4 @@
-from fastapi import APIRouter,Depends,HTTPException
-from sqlalchemy.orm import Session
+from fastapi import APIRouter,Depends
 from schemas.budget import BudgetBase,BudgetUpdate
 
 # services
@@ -13,15 +12,13 @@ router=APIRouter(tags=["budgets"])
 def add_budget(
     category_id:int,
     payload:BudgetBase,
-    service:BudgetService=Depends(get_budget_service)
-    ):
+    service:BudgetService=Depends(get_budget_service)):
     return service.create(category_id,payload)
 
 @router.get("/",response_model=BudgetBase)
 def get_one_budget(
     category_id:int,
     service:BudgetService=Depends(get_budget_service)):
-
     return service.read_one(category_id)
 
 @router.patch("/",response_model=BudgetBase)

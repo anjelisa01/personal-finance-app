@@ -1,5 +1,4 @@
-from pydantic import EmailStr,BaseModel,ConfigDict
-from typing import Optional
+from pydantic import BaseModel,ConfigDict
 from datetime import datetime
 
 class GoalBase(BaseModel):

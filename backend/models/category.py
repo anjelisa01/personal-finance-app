@@ -1,6 +1,5 @@
 #impors
-from sqlalchemy import select, ForeignKey,func,String
-from datetime import datetime
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 
 from core.database import Base
