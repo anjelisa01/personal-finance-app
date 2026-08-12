@@ -43,8 +43,34 @@ PersonalFinanceApp/
 |     tests/  
 |     main.py  
 ```
+
+## How to install
+1. clone the repo
+```
+git clone <repository-url>
+cd <project-directory>
+```
+2. create venv and activate
+```
+python -m venv .venv
+source .venv/bin/activate
+```
+3. install dependencies
+```
+pip install -r requirements.txt
+```
+4. configure .env (copy .env.example then open .env and fill)
+```
+cp .env.example .env
+```
+5. run the server
+```
+uvicorn app.main:app --reload
+```
+
 ## Future Improvement
 - Deployment so it can be access live
 - Add /dashboard endpoint
 - Add Financial Goals Tracking feature
+
 
