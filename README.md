@@ -4,16 +4,17 @@ A rest-API backend for managing Personal Finance. Built using python FastAPI and
 
 ## Overview
 This is a personal project on FastAPI backend, i designed the database schema, the API, and the frontend (still unfinished).  
-The project was built first with just one resource "user", after this user is connected and available then i add authentication, then i add more resources and revise and add more features as the project grow.  
+The project was built first with just one resource "user", after this user is connected and available then i add authentication, then i add more resources and revise and add more features as the project grow. 
+
 I follow the clean architecture style so the project can be maintained and scale as needed.  
 
-There's /frontend folder in the project's repo, which contains UI using streamlit, it's still unfinished and part of the further improvement of the application.  
+There's /frontend folder in the project's repo, that contains UI using streamlit, it's still unfinished and part of the further improvement of the application.  
 
 For the testing, i did integration testing where i test the endpoints which including the services, the pydantic schemas, and sqlalchemy models (all have to be functional for the test to success). Currently i do not have unit testing.
 
 I was planning to deployed via Railway but it required card information which i cannot provide, thus here i present my API using static page of my Swagger UI.
 
-There's a lot to improve here to make the application smoother, safer and more robust.
+There's a lot to improve here to make the application smoother, safer and more robust. Also adding frontend, docker and deployment.
 
 ## Database Schema
 For the ERD image, check file [Database ERD](Database%20ERD.png).
