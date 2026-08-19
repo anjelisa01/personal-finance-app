@@ -1,9 +1,6 @@
 import streamlit as st
 import requests
-st.title("BUDGETTING APP")
-
-
-
+st.title("Personal Finance APP")
 
 col1, col2 = st.columns(2)
 with col1:
