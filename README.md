@@ -12,7 +12,7 @@ There's /frontend folder in the project's repo, that contains UI using streamlit
 
 For the testing, i did integration testing where i test the endpoints which including the services, the pydantic schemas, and sqlalchemy models (all have to be functional for the test to success). Currently i do not have unit testing.
 
-I was planning to deployed via Railway but it required card information which i cannot provide, thus here i present my API using static page of my Swagger UI.
+I was planning to deployed via Railway or Render but it required card information which i cannot provide, thus here i present my API using static page of my Swagger UI.
 
 There's a lot to improve here to make the application smoother, safer and more robust. Also adding frontend, docker and deployment.
 
