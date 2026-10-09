@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from api.v1.endpoints import auth,users,transactions,accounts,categories,goals,budgets
+from api.v1.endpoints import auth,users,transactions,accounts,categories,goals,budgets,dashboard
 
 api_router = APIRouter()
 
@@ -42,4 +42,10 @@ api_router.include_router(
     budgets.router,
     prefix="/categories/{category_id}/budget",
     tags=["budgets"]
+)
+
+api_router.include_router(
+    dashboard.router,
+    prefix="/dashboard",
+    tags=["dashboard"]
 )

@@ -14,6 +14,7 @@ class Account(Base):
     #fields
     id:Mapped[int]=mapped_column(primary_key=True)
     account_name:Mapped[str]=mapped_column(String(255))
+    #add starting balance
     current_balance:Mapped[Decimal]=mapped_column(
         Numeric(12, 2),
         default=Decimal("0.00")
