@@ -35,7 +35,7 @@ class User(Base):
     accounts: Mapped[list["Account"]]=relationship(
         back_populates="user")
     goals: Mapped[list["Goal"]]=relationship(
-        back_populates="user")
+            back_populates="user")
 
 
 '''

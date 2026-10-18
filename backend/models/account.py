@@ -15,7 +15,7 @@ class Account(Base):
     id:Mapped[int]=mapped_column(primary_key=True)
     account_name:Mapped[str]=mapped_column(String(255))
     #add starting balance
-    current_balance:Mapped[Decimal]=mapped_column(
+    initial_balance:Mapped[Decimal]=mapped_column(
         Numeric(12, 2),
         default=Decimal("0.00")
     )
@@ -29,3 +29,5 @@ class Account(Base):
     )
     transactions:Mapped[list["Transaction"]]=relationship(
         back_populates="account" )
+    goals: Mapped[list["Goal"]]=relationship(
+            back_populates="account")

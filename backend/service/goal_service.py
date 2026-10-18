@@ -5,6 +5,7 @@ from sqlalchemy import select
 #model and schema
 from models.goal import Goal
 from schemas.goal import GoalBase,GoalUpdate
+from models.account import Account
 
 #util
 from core.logger import logger
@@ -29,7 +30,7 @@ class GoalService:
         #build goal data
         goal=Goal(**payload.model_dump())
         #no duplcate checking, up to user sometimes the goals are the sama over and over again        
-        goal.user_id=self.user_id
+        goal.account_id=None
         #insert
         try:
             self.db.add(goal)

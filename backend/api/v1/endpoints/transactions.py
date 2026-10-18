@@ -10,6 +10,17 @@ from dependencies.services import get_transaction_service
 
 router=APIRouter(tags=["transactions"])
 
+
+#add transaction transfer
+@router.post("/transfer/{account_out}/{account_in}",response_model=list[TransactionResponse])
+def transfer(
+    account_out:int,
+    account_in:int,
+    payload:TransactionAdd,
+    service:TransactionService=Depends(get_transaction_service)):
+    return service.create_transfer(account_out,account_in,payload)
+        
+
 #Add new transaction
 @router.post("/",response_model=TransactionResponse)
 def add_transaction(

@@ -1,6 +1,6 @@
 #imports
-from sqlalchemy import ForeignKey,String,Numeric,func
-from datetime import datetime
+from sqlalchemy import ForeignKey,String,Numeric,func,Date,text
+from datetime import datetime,date
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from decimal import Decimal
 
@@ -19,6 +19,9 @@ class TransactionType(str,Enum):
     EXPENSE = "expense"
     INCOME = "income"
     SAVING="transfer"
+class Direction(str,Enum):
+    INCOMING="incoming"
+    OUTGOING="outgoing"
 
 class Transaction(Base):
     __tablename__="transactions"
@@ -40,9 +43,22 @@ class Transaction(Base):
             values_callable=lambda e: [item.value for item in e],
         ),
         nullable=False)
-    created_at:Mapped[datetime]=mapped_column(
-        server_default=func.now() #this is fill created_at at the database level
+    created_at: Mapped[date] = mapped_column(
+        Date,
+        server_default=text("CURRENT_DATE"),
+        nullable=False,
     )
+    transfer_id:Mapped[int | None]
+    transfer_direction:Mapped[Direction] = mapped_column(
+        SQLEnum(
+            Direction,
+            name="direction",
+            native_enum=True,
+            create_type=False,
+            values_callable=lambda e: [item.value for item in e],
+        ),
+        nullable=True,
+        default=None)
 
     #fk
     category_id: Mapped[int | None] = mapped_column(

@@ -1,11 +1,11 @@
 from pydantic import BaseModel,ConfigDict
-from datetime import datetime
-
+from datetime import datetime,date
+from decimal import Decimal
 class GoalBase(BaseModel):
     goal_name:str
-    target_amount:float
-    saved_amount:float
-    due_date:datetime
+    target_amount:Decimal
+    due_date:date
+    account_id:int | None=None
     model_config = ConfigDict(from_attributes=True)
 class GoalResponse(GoalBase):
     id:int
@@ -15,4 +15,5 @@ class GoalUpdate(BaseModel):
     target_amount:float | None = None 
     saved_amount:float | None = None 
     due_date:datetime | None = None 
+    account_id:int | None=None
     model_config = ConfigDict(from_attributes=True)

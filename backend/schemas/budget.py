@@ -1,9 +1,17 @@
 from pydantic import BaseModel
+from decimal import Decimal
+
+from enum import Enum
+
+class Period(str,Enum):
+    DAILY = "daily"
+    WEEKLY = "weekly"
+    MONTHLY="monthly"
 
 class BudgetBase(BaseModel):
-    limit:float
-    period:str
+    amount:Decimal
+    period:Period
 
 class BudgetUpdate(BaseModel):
-    limit:float  | None = None
-    period:str  | None = None
+    amount:Decimal  | None = None
+    period:Period  | None = None
