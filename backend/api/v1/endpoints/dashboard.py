@@ -1,8 +1,8 @@
 #import
 from fastapi import APIRouter,Depends
 #schema and service and its dependency
-from service.account_service import AccountService
-from service.transaction_service import TransactionService
+from service.account import AccountService
+from service.transaction import TransactionService
 from dependencies.services import get_account_service
 from dependencies.services import get_transaction_service
 

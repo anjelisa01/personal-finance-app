@@ -3,7 +3,7 @@ from fastapi import APIRouter,Depends
 from schemas.transaction import TransactionAdd,TransactionResponse,TransactionUpdate
 
 # services
-from service.transaction_service import TransactionService
+from service.transaction import TransactionService
 
 #dependencies
 from dependencies.services import get_transaction_service

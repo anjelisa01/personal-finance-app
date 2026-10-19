@@ -1,7 +1,7 @@
 from fastapi import APIRouter,Depends
 from schemas.goal import GoalBase,GoalUpdate,GoalResponse
 
-from service.goal_service import GoalService
+from service.goal import GoalService
 from dependencies.services import get_goal_service
 
 router=APIRouter(tags=["goals"])

@@ -3,7 +3,8 @@ from fastapi import APIRouter,Depends
 
 #schema and service and its dependency
 from schemas.account import AccountBase,AccountResponse,AccountUpdate
-from service.account_service import AccountService
+# from service.account_service import AccountService
+from service.account import AccountService
 from dependencies.services import get_account_service
 
 router=APIRouter(tags=["accounts"])
