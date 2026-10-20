@@ -4,7 +4,6 @@ from sqlalchemy import select
 
 from models.account import Account
 
-
 class AccountRepository:
     def __init__(self, db: Session):
         self.db = db
