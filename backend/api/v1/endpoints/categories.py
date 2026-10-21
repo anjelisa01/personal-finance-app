@@ -1,5 +1,5 @@
 from fastapi import APIRouter,Depends
-from schemas.category import CategoryBase,CategoryResponse
+from schemas.category import CategoryBase,CategoryResponse,CategoryUpdate
 
 from dependencies.services import get_category_service
 from service.category import CategoryService
@@ -20,7 +20,7 @@ def get_one_category(category_id:int,service:CategoryService=Depends(get_categor
 
 #Update 
 @router.patch("/{category_id}",response_model=CategoryResponse)
-def edit_category(category_id:int,payload:CategoryBase,service:CategoryService=Depends(get_category_service)):
+def edit_category(category_id:int,payload:CategoryUpdate,service:CategoryService=Depends(get_category_service)):
     return service.update(category_id,payload)
 
 #delete 

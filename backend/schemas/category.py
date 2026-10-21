@@ -9,6 +9,9 @@ class CategoryBase(BaseModel):
     category_name:str 
     category_type:CategoryType
 
+class CategoryUpdate(BaseModel):
+    category_name:str  | None = None
+    category_type:CategoryType | None = None
 
 class CategoryResponse(CategoryBase):
     id:int
