@@ -25,6 +25,7 @@ class GoalService:
 
         goal = Goal(**payload.model_dump())
         goal.account_id = None
+        # goal.user_id = self.user_id
 
         try:
             goal = self.repository.create(goal)
