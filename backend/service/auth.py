@@ -12,17 +12,16 @@ from core.exceptions import AuthFailedCredential
 class AuthService:
     def __init__(self, db: Session):
         self.repository = AuthRepository(db)
+        self.db = db
 
     def login(self, payload: UserLogin):
         existed_user = self.repository.get_user_by_email(payload.email)
-
-        if (
-            not existed_user
-            or not verify_password(
-                payload.password,
-                existed_user.hashed_password,
-            )
-        ):
+        
+        if not existed_user or not verify_password(
+            self.db,
+            payload.password, 
+            existed_user.hashed_password
+            ):
             raise AuthFailedCredential()
 
         token = create_access_token(
