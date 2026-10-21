@@ -1,12 +1,12 @@
 from fastapi import Depends
 
-from service.user_service import UserService
-from service.goal_service import GoalService
-from service.account_service import AccountService
-from service.auth_service import AuthService
-from service.budget_service import BudgetService
-from service.category_service import CategoryService
-from service.transaction_service import TransactionService
+from service.user import UserService
+from service.goal import GoalService
+from service.account import AccountService
+from service.auth import AuthService
+from service.budget import BudgetService
+from service.category import CategoryService
+from service.transaction import TransactionService
 
 from dependencies.auth import get_current_user
 from dependencies.database import get_db
@@ -15,6 +15,7 @@ def get_user_service(db: Session = Depends(get_db)):
     return UserService(db)
 
 def get_goal_service(db: Session = Depends(get_db),user_id:int=Depends(get_current_user)):
+    print("GOAL SERVICE user_id:", repr(user_id))
     return GoalService(db,user_id)
 
 def get_account_service(db: Session = Depends(get_db),user_id:int=Depends(get_current_user)):
