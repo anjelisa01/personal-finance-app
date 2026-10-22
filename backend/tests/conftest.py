@@ -69,10 +69,40 @@ def created_goal(authenticated_client):
     assert response.status_code == 200, response.text
     return response.json()
 
+#authenticated client - make category - make budget
+@pytest.fixture
+def created_budget(authenticated_client,created_category):
+    category_id=created_category['id']
+    payload={
+            "amount": 200,
+            "period":"monthly"
+    }
+    response=authenticated_client.post(
+        f"/api/v1/categories/{category_id}/budget",
+        json=payload,
+    )
+    return response.json()
 
 
-
-
+#bare minimum transaction
+#authenticated client - make category - make budget
+@pytest.fixture
+def created_transaction(authenticated_client,created_account,):
+    account_id=created_account['id']
+    payload={
+            "title": "test_fixture_created_transaction_minimal",
+            "amount": 500,
+            "note": "a test transaction",
+            "category_id": 0, #no category
+            "transaction_type": "expense",
+            # "transfer_id": 0, #not a transfer
+            # "transfer_direction": "incoming" #not a transfer
+            }
+    response=authenticated_client.post(
+        f"/api/v1/accounts/{account_id}/transactions",
+        json=payload,
+    )
+    return response.json()
 
 
 
