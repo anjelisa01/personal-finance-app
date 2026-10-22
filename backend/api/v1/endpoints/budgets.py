@@ -1,5 +1,5 @@
 from fastapi import APIRouter,Depends
-from schemas.budget import BudgetBase,BudgetUpdate
+from schemas.budget import BudgetBase,BudgetUpdate,BudgetResponse
 
 # services
 # from service.budget_service import BudgetService
@@ -10,20 +10,20 @@ from dependencies.services import get_budget_service
 
 router=APIRouter(tags=["budgets"])
 
-@router.post("/",response_model=BudgetBase)
+@router.post("/",response_model=BudgetResponse)
 def add_budget(
     category_id:int,
     payload:BudgetBase,
     service:BudgetService=Depends(get_budget_service)):
     return service.create(category_id,payload)
 
-@router.get("/",response_model=BudgetBase)
+@router.get("/",response_model=BudgetResponse)
 def get_one_budget(
     category_id:int,
     service:BudgetService=Depends(get_budget_service)):
     return service.read_one(category_id)
 
-@router.patch("/",response_model=BudgetBase)
+@router.patch("/",response_model=BudgetResponse)
 def edit_budget(
     category_id:int,
     payload:BudgetUpdate,

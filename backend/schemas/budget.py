@@ -15,3 +15,6 @@ class BudgetBase(BaseModel):
 class BudgetUpdate(BaseModel):
     amount:Decimal  | None = None
     period:Period  | None = None
+
+class BudgetResponse(BudgetBase):
+    category_id:int
