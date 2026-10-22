@@ -170,22 +170,22 @@ class TransactionService:
 
         update_data = payload.model_dump(exclude_unset=True)
 
-        if update_data["amount"]:
-            difference = transaction.amount - update_data["amount"]
+        # if update_data["amount"]:
+        #     difference = transaction.amount - update_data["amount"]
 
-            if transaction.transaction_type == "income":
-                account.current_balance = (
-                    account.current_balance - difference
-                )
-                logger.info(
-                    "current balance after update : %s",
-                    account.current_balance,
-                )
+        #     if transaction.transaction_type == "income":
+        #         account.current_balance = (
+        #             account.current_balance - difference
+        #         )
+        #         logger.info(
+        #             "current balance after update : %s",
+        #             account.current_balance,
+        #         )
 
-            if transaction.transaction_type == "expense":
-                account.current_balance = (
-                    account.current_balance + difference
-                )
+        #     if transaction.transaction_type == "expense":
+        #         account.current_balance = (
+        #             account.current_balance + difference
+        #         )
 
         try:
             transaction = self.repository.update(
