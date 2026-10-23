@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from service.category import CategoryService
+from services.category import CategoryService
 from core.exceptions import ResourceExistedError, ResourceNotFoundError
 
 

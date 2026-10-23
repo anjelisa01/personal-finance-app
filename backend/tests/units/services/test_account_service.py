@@ -3,7 +3,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from service.account import AccountService
+from services.account import AccountService
 from schemas.account import AccountBase, AccountUpdate
 from core.exceptions import ResourceExistedError, ResourceNotFoundError
 

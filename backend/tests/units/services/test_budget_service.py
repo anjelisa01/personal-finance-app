@@ -3,7 +3,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from service.budget import BudgetService
+from services.budget import BudgetService
 from schemas.budget import BudgetBase, BudgetUpdate
 from core.exceptions import ResourceNotFoundError
 

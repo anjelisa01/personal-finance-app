@@ -2,9 +2,9 @@ from unittest.mock import MagicMock
 from types import SimpleNamespace
 
 import pytest
-import service.auth as auth_module
+import services.auth as auth_module
 
-from service.auth import AuthService
+from services.auth import AuthService
 from schemas.auth import UserLogin
 from core.exceptions import AuthFailedCredential
 
@@ -26,7 +26,7 @@ def test_login_success(monkeypatch):
     service.repository.get_user_by_email.return_value = user
 
     monkeypatch.setattr(
-        auth_module, "verify_password", lambda password, hashed: True
+        auth_module, "verify_password", lambda db, password, hashed: True
     )
     monkeypatch.setattr(
         auth_module, "create_access_token", lambda data: "fake-token"
@@ -80,7 +80,7 @@ def test_login_wrong_password(monkeypatch):
     service.repository.get_user_by_email.return_value = user
 
     monkeypatch.setattr(
-        auth_module, "verify_password", lambda password, hashed: False
+        auth_module, "verify_password", lambda db, password, hashed: False
     )
 
     payload = UserLogin(

@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from service.goal import GoalService
+from services.goal import GoalService
 from core.exceptions import ResourceExistedError, ResourceNotFoundError
 
 

@@ -6,8 +6,8 @@ from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 import pytest
-
-from service.user import UserService
+from core.security import hash_password
+from services.user import UserService
 from core.exceptions import ResourceExistedError
 
 
@@ -31,7 +31,7 @@ def payload():
 
 def test_create_user(service, payload, monkeypatch):
     monkeypatch.setattr(
-        "service.user.hash_password",
+        "services.user.hash_password",
         lambda password: "hashed_password",
     )
     service.repository.get_by_email.return_value = None
@@ -97,7 +97,7 @@ def test_update_user_password(service, monkeypatch):
     payload.model_dump.return_value = {"password": "new_password"}
 
     monkeypatch.setattr(
-        "service.user.hash_password",
+        "services.user.hash_password",
         lambda password: "new_hash",
     )
 
@@ -132,7 +132,7 @@ def test_delete_user_soft_delete(service):
 
 def test_create_user_rolls_back_on_error(service, payload, monkeypatch):
     monkeypatch.setattr(
-        "service.user.hash_password",
+        "core.security.hash_password",
         lambda password: "hashed_password",
     )
     service.repository.get_by_email.return_value = None

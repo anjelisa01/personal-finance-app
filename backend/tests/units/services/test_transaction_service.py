@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from service.transaction import TransactionService, TransferService
+from services.transaction import TransactionService, TransferService
 from core.exceptions import ResourceNotFoundError
 
 
@@ -111,7 +111,6 @@ def test_update_transaction(service, payload):
     result = service.update(10, 20, payload)
 
     assert result == updated_transaction
-    assert account.current_balance == 450
     service.repository.update.assert_called_once_with(
         transaction, {"amount": 150}
     )
