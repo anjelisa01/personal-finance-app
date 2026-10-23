@@ -4,7 +4,7 @@ from fastapi import APIRouter,Depends
 from schemas.user import UserCreate,UserResponse,UserUpdate  
 
 #service
-from service.user import UserService
+from services.user import UserService
 
 #dependencies
 from dependencies.auth import get_current_user

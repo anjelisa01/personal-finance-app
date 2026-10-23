@@ -1,12 +1,12 @@
 from fastapi import Depends
 
-from service.user import UserService
-from service.goal import GoalService
-from service.account import AccountService
-from service.auth import AuthService
-from service.budget import BudgetService
-from service.category import CategoryService
-from service.transaction import TransactionService
+from services.user import UserService
+from services.goal import GoalService
+from services.account import AccountService
+from services.auth import AuthService
+from services.budget import BudgetService
+from services.category import CategoryService
+from services.transaction import TransactionService
 
 from dependencies.auth import get_current_user
 from dependencies.database import get_db

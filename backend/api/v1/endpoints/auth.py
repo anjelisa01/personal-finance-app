@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 from schemas.auth import UserLogin                                                      
 # from service.auth_service import AuthService
-from service.auth import AuthService
+from services.auth import AuthService
 
 from dependencies.services import get_auth_service
 

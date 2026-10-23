@@ -3,7 +3,7 @@ from schemas.budget import BudgetBase,BudgetUpdate,BudgetResponse
 
 # services
 # from service.budget_service import BudgetService
-from service.budget import BudgetService
+from services.budget import BudgetService
 
 #dependencies
 from dependencies.services import get_budget_service

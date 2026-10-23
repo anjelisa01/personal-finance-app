@@ -2,7 +2,7 @@ from fastapi import APIRouter,Depends
 from schemas.category import CategoryBase,CategoryResponse,CategoryUpdate
 
 from dependencies.services import get_category_service
-from service.category import CategoryService
+from services.category import CategoryService
 
 router=APIRouter(tags=["categories"])
 
