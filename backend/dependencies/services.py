@@ -1,4 +1,5 @@
 from fastapi import Depends
+from sqlalchemy.orm import Session
 
 from services.user import UserService
 from services.goal import GoalService
